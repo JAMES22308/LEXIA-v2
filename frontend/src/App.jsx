@@ -262,7 +262,7 @@ function App() {
         </div>
 
         <p className="disclaimer">
-          LEXIA can make mistakes. Check important information.
+          Powered by AI.
         </p>
 
       </div>
