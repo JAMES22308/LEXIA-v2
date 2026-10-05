@@ -17,7 +17,25 @@
         "command": "lexia.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "lexia",
+          "title": "LEXIA",
+          "icon": "media/lexia.svg"
+        }
+      ]
+    },
+    "views": {
+      "lexia": [
+        {
+          "type": "webview",
+          "id": "lexia.chat",
+          "name": "LEXIA"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
