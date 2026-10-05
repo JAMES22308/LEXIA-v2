@@ -65,6 +65,7 @@
     "serialize-javascript": "^7.0.6"
   },
   "dependencies": {
-    "marked": "^18.0.14"
+    "marked": "^18.0.14",
+    "prismjs": "^1.30.0"
   }
 }

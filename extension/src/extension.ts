@@ -1,23 +1,31 @@
 import * as vscode from 'vscode';
+
 import { LexiaViewProvider } from './lexiaViewProvider';
 
-export function activate(context: vscode.ExtensionContext) {
 
-    console.log('LEXIA extension is now active.');
+export function activate(
+    context: vscode.ExtensionContext
+) {
 
-    // Create the LEXIA sidebar provider
+    console.log(
+        'LEXIA extension is now active.'
+    );
+
+
     const provider =
-        new LexiaViewProvider();
+        new LexiaViewProvider(context);
 
-    // Register LEXIA sidebar
+
     context.subscriptions.push(
+
         vscode.window.registerWebviewViewProvider(
             'lexia.chat',
             provider
         )
+
     );
 
-    // Keep the original Hello World command
+
     const disposable =
         vscode.commands.registerCommand(
             'lexia.helloWorld',
@@ -30,7 +38,11 @@ export function activate(context: vscode.ExtensionContext) {
             }
         );
 
-    context.subscriptions.push(disposable);
+
+    context.subscriptions.push(
+        disposable
+    );
 }
+
 
 export function deactivate() {}

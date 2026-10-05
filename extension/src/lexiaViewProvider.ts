@@ -1,11 +1,18 @@
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 
 import { askLexia } from './lexiaApi';
-import { getWebviewHtml } from './webview';
+import { getWebviewHtml } from './webview/index';
 
 
 export class LexiaViewProvider
     implements vscode.WebviewViewProvider {
+
+
+    constructor(
+        private readonly context: vscode.ExtensionContext
+    ) {}
 
 
     resolveWebviewView(
@@ -69,8 +76,27 @@ export class LexiaViewProvider
         );
 
 
+        // Load Prism.js
+        const prismPath =
+            path.join(
+                this.context.extensionPath,
+                'node_modules',
+                'prismjs',
+                'prism.js'
+            );
+
+
+        const prismScript =
+            fs.readFileSync(
+                prismPath,
+                'utf8'
+            );
+
+
         // Load Webview UI
         webviewView.webview.html =
-            getWebviewHtml();
+            getWebviewHtml(
+                prismScript
+            );
     }
 }
