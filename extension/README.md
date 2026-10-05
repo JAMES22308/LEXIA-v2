@@ -28,3 +28,30 @@ LEXIA API
 AI Provider
    ↓
 LEXIA Response
+
+
+
+
+
+
+
+## Developer Access ##
+
+Clone the repository and build the VSIX extension:
+
+```bash
+git clone https://github.com/JAMES22308/LEXIA-v2.git
+cd LEXIA-v2/extension
+npm install
+vsce package
+```
+
+This generates the `lexia-0.0.1.vsix` file.
+
+Install the extension in VS Code:
+
+```bash
+code --install-extension lexia-0.0.1.vsix
+```
+
+Then open VS Code and click the **LEXIA** icon in the Activity Bar.
