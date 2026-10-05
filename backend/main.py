@@ -8,9 +8,18 @@ from models.chat import ChatRequest
 from controllers.chat_controller import ask_question
 app = FastAPI()
 
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:5173"], //allowing localhost to connect
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
+# //allowing any website to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"], 
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
