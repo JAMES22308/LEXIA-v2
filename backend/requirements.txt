@@ -1,5 +1,7 @@
 fastapi
 uvicorn
 python-dotenv
-requests
+groq
+google-genai
 pydantic
+requests
