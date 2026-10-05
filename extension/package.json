@@ -3,9 +3,18 @@
   "displayName": "LEXIA",
   "description": "AI coding assistant that helps developers understand, fix, refactor, and generate code directly in VS Code.",
   "version": "0.0.1",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/JAMES22308/LEXIA-v2.git"
+  },
+
   "engines": {
     "vscode": "^1.140.0"
   },
+
+
+  
+
   "categories": [
     "Other"
   ],
