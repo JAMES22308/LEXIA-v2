@@ -1,20 +1,16 @@
 {
   "name": "lexia",
   "displayName": "LEXIA",
+  "publisher": "lexiaAI",
   "description": "AI coding assistant that helps developers understand, fix, refactor, and generate code directly in VS Code.",
   "version": "0.0.1",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/JAMES22308/LEXIA-v2.git"
+    "type": "git",
+    "url": "https://github.com/JAMES22308/LEXIA-v2.git"
   },
-
   "engines": {
     "vscode": "^1.140.0"
   },
-
-
-  
-
   "categories": [
     "Other"
   ],
@@ -55,17 +51,20 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.140.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "24.x",
-    "typescript-eslint": "^8.61.1",
+    "@types/vscode": "^1.140.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0",
     "eslint": "^10.5.0",
     "typescript": "^6.0.3",
-    "@vscode/test-cli": "^0.0.15",
-    "@vscode/test-electron": "^3.0.0"
+    "typescript-eslint": "^8.61.1"
   },
   "overrides": {
     "diff": "^8.0.4",
     "serialize-javascript": "^7.0.6"
+  },
+  "dependencies": {
+    "marked": "^18.0.14"
   }
 }
