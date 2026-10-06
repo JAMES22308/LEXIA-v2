@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./App.css";
+// import Sidebar from "./components/Sidebar";
 
 function App() {
 
@@ -102,6 +103,7 @@ function App() {
 
   return (
     <div className="app">
+      {/* <Sidebar /> */}
 
       <header className="top-bar">
 
@@ -308,8 +310,7 @@ function App() {
 
         <p className="disclaimer">
           Powered by AI.
-        </p>
-        <button
+          <button
             className="auth-logout-button"
             onClick={async () => {
                 await supabase.auth.signOut();
@@ -317,6 +318,8 @@ function App() {
         >
             Sign out
         </button>
+        </p>
+        
 
       </div>
 

@@ -1,0 +1,76 @@
+/* .sidebar {
+  width: 240px;
+  height: 100vh;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #111318;
+  border-right: 1px solid #252832;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 28px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-logo .logo-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #111318;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.new-chat-button {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #30343e;
+  border-radius: 9px;
+  background: #1a1d24;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.new-chat-button:hover {
+  background: #222630;
+  border-color: #414653;
+}
+
+.sidebar-spacer {
+  flex: 1;
+}
+
+.auth-logout-button {
+  width: fit-content;
+  padding: 7px 12px;
+  margin: 0 4px;
+  border: 1px solid #30343e;
+  border-radius: 7px;
+  background: transparent;
+  color: #aeb3bd;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-logout-button:hover {
+  background: #1c1f26;
+  color: #ffffff;
+  border-color: #454a56;
+} */
