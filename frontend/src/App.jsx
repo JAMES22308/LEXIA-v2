@@ -1,5 +1,7 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "./lib/supabase";
+import Auth from "./components/auth/Auth";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -7,9 +9,52 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./App.css";
 
 function App() {
+
+
+  const [session, setSession] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+
+    supabase.auth.getSession().then(({ data }) => {
+
+      setSession(data.session);
+      setAuthLoading(false);
+
+    });
+
+    const {
+      data: { subscription }
+    } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+
+        setSession(session);
+
+      }
+    );
+
+    return () => {
+      subscription.unsubscribe();
+    };
+
+  }, []);
+
+  if (authLoading) {
+    return <div>Loading LEXIA...</div>;
+  }
+
+  if (!session) {
+    return <Auth />;
+  }
+
+
+
+
 
   const askAI = async () => {
     if (!question.trim() || loading) return;
@@ -264,6 +309,14 @@ function App() {
         <p className="disclaimer">
           Powered by AI.
         </p>
+        <button
+            className="auth-logout-button"
+            onClick={async () => {
+                await supabase.auth.signOut();
+            }}
+        >
+            Sign out
+        </button>
 
       </div>
 
