@@ -28,6 +28,10 @@ app.add_middleware(
 def home():
     return {"python": "api is running"}
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 
 @app.post("/ask")
 def ask(request: ChatRequest):
