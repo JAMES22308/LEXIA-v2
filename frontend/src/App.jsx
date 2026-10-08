@@ -18,6 +18,19 @@ function App() {
   // UI only
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  const warmUpBackend = async () => {
+    try {
+      await fetch("https://lexia-api-v2.onrender.com/health");
+      console.log("LEXIA backend warm-up request completed.");
+    } catch (error) {
+      console.error("LEXIA backend warm-up failed:", error);
+    }
+  };
+
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
