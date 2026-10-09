@@ -1,3 +1,8 @@
+
+/* =========================
+   Global
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -16,7 +21,6 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-
   background: #ffffff;
   color: #1f2937;
 }
@@ -31,7 +35,7 @@ button {
 }
 
 /* =========================
-   App
+   App Layout
 ========================= */
 
 .app {
@@ -42,6 +46,16 @@ button {
   background: #ffffff;
 }
 
+.main-area {
+  position: relative;
+  min-width: 0;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
 /* =========================
    Sidebar
 ========================= */
@@ -49,19 +63,14 @@ button {
 .sidebar {
   width: 260px;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
-
   flex-shrink: 0;
-
   background: #f7f7f8;
   border-right: 1px solid #e5e7eb;
-
   transition:
     width 0.2s ease,
     background 0.2s ease;
-
   overflow: hidden;
 }
 
@@ -69,19 +78,14 @@ button {
   width: 68px;
 }
 
-/* =========================
-   Sidebar Top
-========================= */
+/* Sidebar top */
 
 .sidebar-top {
   height: 64px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 12px;
-
   flex-shrink: 0;
 }
 
@@ -89,25 +93,19 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-
   min-width: 0;
 }
 
 .logo-icon {
   width: 34px;
   height: 34px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-shrink: 0;
-
   border-radius: 9px;
-
   background: #111827;
   color: #ffffff;
-
   font-size: 15px;
   font-weight: 700;
 }
@@ -122,22 +120,16 @@ button {
 .sidebar-toggle {
   width: 32px;
   height: 32px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: none;
   border-radius: 8px;
-
   background: transparent;
   color: #6b7280;
-
   font-size: 25px;
   line-height: 1;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     color 0.15s ease;
@@ -148,43 +140,30 @@ button {
   color: #111827;
 }
 
-/* =========================
-   Sidebar Content
-========================= */
+/* Sidebar content */
 
 .sidebar-content {
   flex: 1;
-
   padding: 8px 10px;
-
   overflow-y: auto;
 }
 
-/* =========================
-   New Chat
-========================= */
+/* New chat */
 
 .new-chat-button {
   width: 100%;
   height: 42px;
-
   display: flex;
   align-items: center;
   gap: 11px;
-
   padding: 0 12px;
-
   border: 1px solid #e1e1e1;
   border-radius: 9px;
-
   background: #ffffff;
   color: #1f2937;
-
   font-size: 14px;
   font-weight: 500;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     border 0.15s ease,
@@ -194,9 +173,7 @@ button {
 .new-chat-button:hover {
   background: #ffffff;
   border-color: #d1d5db;
-
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .new-chat-icon {
@@ -204,9 +181,7 @@ button {
   line-height: 1;
 }
 
-/* =========================
-   Sidebar Section
-========================= */
+/* Sidebar history */
 
 .sidebar-section {
   margin-top: 28px;
@@ -215,37 +190,26 @@ button {
 .sidebar-section-title {
   padding: 0 10px;
   margin-bottom: 8px;
-
   color: #8b8b8b;
-
   font-size: 11px;
   font-weight: 600;
-
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .history-item {
   width: 100%;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   padding: 9px 10px;
-
   border: none;
   border-radius: 8px;
-
   background: transparent;
   color: #374151;
-
   text-align: left;
-
   cursor: pointer;
-
   font-size: 13px;
-
   transition: background 0.15s ease;
 }
 
@@ -265,21 +229,15 @@ button {
 
 .empty-history {
   padding: 8px 10px;
-
   color: #9ca3af;
-
   font-size: 13px;
 }
 
-/* =========================
-   Sidebar Bottom
-========================= */
+/* Sidebar bottom */
 
 .sidebar-bottom {
   padding: 12px;
-
   border-top: 1px solid #e5e7eb;
-
   flex-shrink: 0;
 }
 
@@ -287,32 +245,25 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-
   min-width: 0;
 }
 
 .user-avatar {
   width: 32px;
   height: 32px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-shrink: 0;
-
   border-radius: 8px;
-
   background: #111827;
   color: #ffffff;
-
   font-size: 12px;
   font-weight: 600;
 }
 
 .user-info {
   min-width: 0;
-
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -320,14 +271,10 @@ button {
 
 .user-name {
   max-width: 160px;
-
   overflow: hidden;
-
   color: #374151;
-
   font-size: 12px;
   font-weight: 500;
-
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -339,21 +286,14 @@ button {
 
 .sign-out-button {
   width: 100%;
-
   margin-top: 10px;
-
   padding: 7px;
-
   border: none;
   border-radius: 7px;
-
   background: transparent;
   color: #9ca3af;
-
   font-size: 12px;
-
   text-align: left;
-
   cursor: pointer;
 }
 
@@ -363,144 +303,102 @@ button {
 }
 
 /* =========================
-   Main Area
-========================= */
-
-.main-area {
-  position: relative;
-
-  min-width: 0;
-  height: 100vh;
-
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-
-  background: #ffffff;
-}
-
-/* =========================
-   Top Bar
+   Header
 ========================= */
 
 .top-bar {
   height: 60px;
-
   display: flex;
   align-items: center;
-
   padding: 0 24px;
-
   border-bottom: 1px solid #f0f0f0;
-
   background: rgba(255, 255, 255, 0.96);
-
   flex-shrink: 0;
 }
 
 .mobile-logo {
   display: none;
-
   align-items: center;
   gap: 9px;
-
   font-size: 16px;
   font-weight: 700;
 }
 
 .top-status {
   margin-left: auto;
-
   display: flex;
   align-items: center;
   gap: 7px;
-
   color: #8b8b8b;
-
   font-size: 12px;
 }
 
 .status-dot {
   width: 6px;
   height: 6px;
-
   border-radius: 50%;
-
   background: #22c55e;
 }
 
+/* Mobile menu controls */
+
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-backdrop {
+  display: none;
+}
+
 /* =========================
-   Chat Container
+   Chat
 ========================= */
 
 .chat-container {
   width: 100%;
   max-width: 860px;
-
   margin: 0 auto;
-
-  padding:
-    45px 24px
-    180px;
-
+  padding: 45px 24px 180px;
   flex: 1;
-
   overflow-y: auto;
-
   scrollbar-width: thin;
 }
 
-/* =========================
-   Welcome
-========================= */
+/* Welcome */
 
 .welcome {
   min-height: 65vh;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
 .welcome-icon {
   width: 54px;
   height: 54px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 20px;
-
   border-radius: 15px;
-
   background: #111827;
   color: #ffffff;
-
   font-size: 25px;
 }
 
 .welcome h1 {
   margin: 0;
-
   color: #111827;
-
   font-size: 31px;
   font-weight: 650;
-
   letter-spacing: -0.8px;
 }
 
 .welcome p {
   margin: 10px 0 28px;
-
   color: #8b8b8b;
-
   font-size: 15px;
 }
 
@@ -508,23 +406,17 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
   gap: 9px;
 }
 
 .suggestions button {
   padding: 9px 14px;
-
   border: 1px solid #e5e7eb;
   border-radius: 9px;
-
   background: #ffffff;
   color: #4b5563;
-
   font-size: 13px;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     border 0.15s ease,
@@ -543,10 +435,8 @@ button {
 
 .message {
   width: 100%;
-
   display: flex;
   gap: 13px;
-
   margin-bottom: 30px;
 }
 
@@ -556,18 +446,14 @@ button {
 
 .message.user .message-content {
   max-width: 70%;
-
   padding: 10px 15px;
-
   border-radius: 17px;
-
   background: #f3f4f6;
   color: #111827;
 }
 
 .message.user p {
   margin: 0;
-
   line-height: 1.55;
 }
 
@@ -577,30 +463,22 @@ button {
 
 .message.assistant .message-content {
   min-width: 0;
-
   width: 100%;
   max-width: 760px;
-
   line-height: 1.65;
-
   overflow-wrap: anywhere;
 }
 
 .avatar {
   width: 30px;
   height: 30px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-shrink: 0;
-
   border-radius: 8px;
-
   background: #111827;
   color: #ffffff;
-
   font-size: 13px;
   font-weight: 700;
 }
@@ -615,7 +493,6 @@ button {
 
 .message-content p {
   margin: 0 0 16px;
-
   line-height: 1.7;
 }
 
@@ -627,9 +504,7 @@ button {
 .message-content h2,
 .message-content h3 {
   margin: 24px 0 12px;
-
   color: #111827;
-
   line-height: 1.35;
 }
 
@@ -653,13 +528,11 @@ button {
 .message-content ul,
 .message-content ol {
   margin: 10px 0 18px;
-
   padding-left: 25px;
 }
 
 .message-content li {
   margin: 7px 0;
-
   line-height: 1.6;
 }
 
@@ -668,42 +541,28 @@ button {
   color: #6b7280;
 }
 
-/* =========================
-   Inline Code
-========================= */
+/* Inline code */
 
 .message-content :not(pre) > code {
   padding: 2px 6px;
-
   border-radius: 5px;
-
   background: #f1f1f1;
-
   color: #be123c;
-
   font-size: 0.9em;
-
   font-family:
     "SFMono-Regular",
     Consolas,
     monospace;
 }
 
-/* =========================
-   Code Blocks
-========================= */
+/* Code blocks */
 
 .code-block {
   width: 100%;
-
   margin: 18px 0;
-
   overflow: hidden;
-
   border: 1px solid #2d333b;
-
   border-radius: 9px;
-
   background: #282c34;
 }
 
@@ -711,29 +570,19 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 8px 12px;
-
   background: #21252b;
-
   color: #9da5b4;
-
   font-size: 12px;
 }
 
 .code-header button {
   padding: 4px 9px;
-
   border: 1px solid #4b5563;
-
   border-radius: 5px;
-
   background: transparent;
-
   color: #d1d5db;
-
   font-size: 12px;
-
   cursor: pointer;
 }
 
@@ -744,50 +593,34 @@ button {
 
 .code-block pre {
   margin: 0 !important;
-
   padding: 16px !important;
-
   white-space: pre !important;
-
   overflow-x: auto !important;
   overflow-y: hidden !important;
-
   font-family:
     "SFMono-Regular",
     Consolas,
     "Liberation Mono",
     monospace !important;
-
   font-size: 14px !important;
-
   line-height: 1.6 !important;
-
   tab-size: 4 !important;
 }
 
 .code-block pre code {
   display: block !important;
-
   background: transparent !important;
-
   white-space: pre !important;
-
   word-break: normal !important;
-
   overflow-wrap: normal !important;
-
   color: #abb2bf !important;
-
   font-family:
     "SFMono-Regular",
     Consolas,
     "Liberation Mono",
     monospace !important;
-
   font-size: 14px;
-
   line-height: 1.6;
-
   tab-size: 4;
 }
 
@@ -795,36 +628,26 @@ button {
   color: inherit;
 }
 
-/* =========================
-   Tables
-========================= */
+/* Tables */
 
 .message-content table {
   width: 100%;
-
   margin: 18px 0;
-
   border-collapse: collapse;
-
   border: 1px solid #e5e7eb;
-
   font-size: 14px;
 }
 
 .message-content th,
 .message-content td {
   padding: 10px 13px;
-
   border: 1px solid #e5e7eb;
-
   text-align: left;
 }
 
 .message-content th {
   background: #f9fafb;
-
   font-weight: 650;
-
   color: #111827;
 }
 
@@ -832,19 +655,13 @@ button {
   background: #fafafa;
 }
 
-/* =========================
-   Blockquotes
-========================= */
+/* Blockquotes */
 
 .message-content blockquote {
   margin: 18px 0;
-
   padding: 11px 16px;
-
   border-left: 4px solid #111827;
-
   background: #f9fafb;
-
   color: #4b5563;
 }
 
@@ -852,13 +669,10 @@ button {
   margin: 0;
 }
 
-/* =========================
-   Links
-========================= */
+/* Links */
 
 .message-content a {
   color: #2563eb;
-
   text-decoration: none;
 }
 
@@ -866,56 +680,39 @@ button {
   text-decoration: underline;
 }
 
-/* =========================
-   Provider
-========================= */
+/* Provider */
 
 .provider {
   display: flex;
   align-items: center;
-
   gap: 6px;
-
   margin-top: 14px;
-
   color: #9ca3af;
-
   font-size: 11px;
-
   text-transform: capitalize;
 }
 
 .provider-dot {
   width: 5px;
   height: 5px;
-
   border-radius: 50%;
-
   background: #22c55e;
 }
 
-/* =========================
-   Typing
-========================= */
+/* Typing indicator */
 
 .typing {
   display: flex;
-
   gap: 5px;
-
   padding: 10px 0;
 }
 
 .typing span {
   width: 7px;
   height: 7px;
-
   border-radius: 50%;
-
   background: #9ca3af;
-
-  animation:
-    typing 1.2s infinite ease-in-out;
+  animation: typing 1.2s infinite ease-in-out;
 }
 
 .typing span:nth-child(2) {
@@ -931,13 +728,11 @@ button {
   60%,
   100% {
     opacity: 0.35;
-
     transform: translateY(0);
   }
 
   30% {
     opacity: 1;
-
     transform: translateY(-3px);
   }
 }
@@ -948,52 +743,30 @@ button {
 
 .input-wrapper {
   position: absolute;
-
   bottom: 0;
-
   left: 0;
   right: 0;
-
-  padding:
-    18px 24px
-    14px;
-
-  background:
-    linear-gradient(
-      to top,
-      #ffffff 72%,
-      rgba(255, 255, 255, 0)
-    );
-
+  padding: 18px 24px 14px;
+  background: linear-gradient(
+    to top,
+    #ffffff 72%,
+    rgba(255, 255, 255, 0)
+  );
   z-index: 5;
 }
 
 .input-box {
   max-width: 850px;
-
   min-height: 56px;
-
   margin: 0 auto;
-
   display: flex;
   align-items: flex-end;
-
   gap: 10px;
-
-  padding:
-    8px 9px
-    8px 17px;
-
+  padding: 8px 9px 8px 17px;
   border: 1px solid #d1d5db;
-
   border-radius: 17px;
-
   background: #ffffff;
-
-  box-shadow:
-    0 4px 20px
-    rgba(0, 0, 0, 0.05);
-
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition:
     border 0.15s ease,
     box-shadow 0.15s ease;
@@ -1001,31 +774,19 @@ button {
 
 .input-box:focus-within {
   border-color: #9ca3af;
-
-  box-shadow:
-    0 4px 24px
-    rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .input-box textarea {
   flex: 1;
-
   resize: none;
-
   max-height: 140px;
-
   padding: 8px 0;
-
   border: none;
-
   outline: none;
-
   background: transparent;
-
   color: #111827;
-
   font-size: 15px;
-
   line-height: 1.5;
 }
 
@@ -1036,21 +797,13 @@ button {
 .send-button {
   width: 38px;
   height: 38px;
-
   flex-shrink: 0;
-
   border: none;
-
   border-radius: 10px;
-
   background: #111827;
-
   color: #ffffff;
-
   font-size: 21px;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     transform 0.15s ease;
@@ -1058,89 +811,178 @@ button {
 
 .send-button:hover:not(:disabled) {
   background: #374151;
-
   transform: translateY(-1px);
 }
 
 .send-button:disabled {
   opacity: 0.3;
-
   cursor: not-allowed;
 }
 
 .disclaimer {
   max-width: 850px;
-
   margin: 8px auto 0;
-
   text-align: center;
-
   color: #9ca3af;
-
   font-size: 11px;
 }
 
-/* =========================
-   Loading Screen
-========================= */
+/* Loading screen */
 
 .loading-screen {
   width: 100%;
   height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: #ffffff;
-
   color: #6b7280;
-
   font-size: 14px;
 }
 
 /* =========================
-   Mobile
+   Mobile Sidebar and Layout
 ========================= */
 
 @media (max-width: 700px) {
 
-  .sidebar {
-    width: 68px;
+
+
+  .mobile-menu-open .mobile-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 29;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
   }
 
-  .sidebar-open .sidebar {
+  .mobile-menu-open .sidebar {
+    z-index: 30;
+  }
+  .app {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .main-area {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+  }
+
+  /* Slide-in sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    max-width: 85vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 30;
+    transform: translateX(-105%);
+    transition: transform 0.25s ease;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .mobile-menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Ignore desktop collapsed width on mobile */
+  .sidebar-open .sidebar,
+  .sidebar-closed .sidebar {
     width: 260px;
   }
 
-  .sidebar-open .sidebar .logo-text,
-  .sidebar-open .sidebar .new-chat-button span:last-child,
-  .sidebar-open .sidebar .sidebar-section,
-  .sidebar-open .sidebar .user-info,
-  .sidebar-open .sidebar .sign-out-button {
+  /* Display sidebar labels when available */
+  .sidebar .logo-text,
+  .sidebar .new-chat-button span:last-child,
+  .sidebar .sidebar-section,
+  .sidebar .user-info,
+  .sidebar .sign-out-button {
     display: block;
   }
 
+  .sidebar-toggle {
+    display: none;
+  }
+
+  /* Backdrop */
+  .mobile-menu-open .mobile-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+  }
+
+  /* Mobile header */
   .top-bar {
-    padding: 0 17px;
+    height: 56px;
+    flex-shrink: 0;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #111827;
+    font-size: 23px;
+    cursor: pointer;
+  }
+
+  .mobile-menu-button:hover {
+    background: #f3f4f6;
   }
 
   .mobile-logo {
     display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  /* Hide the logo icon, retain LEXIA text */
+  .mobile-logo .logo-icon {
+    display: none;
   }
 
   .top-status {
     display: none;
   }
 
+  /* Chat layout */
   .chat-container {
-    padding:
-      35px 16px
-      160px;
+    width: 100%;
+    max-width: none;
+    padding: 24px 16px 150px;
   }
 
   .welcome {
-    min-height: 60vh;
+    min-height: 55vh;
   }
 
   .welcome h1 {
@@ -1148,7 +990,7 @@ button {
   }
 
   .message.user .message-content {
-    max-width: 85%;
+    max-width: 88%;
   }
 
   .message.assistant .message-content {
@@ -1157,25 +999,27 @@ button {
 
   .message-content table {
     display: block;
-
     overflow-x: auto;
   }
 
-  .input-wrapper {
-    padding:
-      12px 12px
-      10px;
-  }
-
+  /* Suggestions */
   .suggestions {
     flex-direction: column;
-
     width: 100%;
-
     max-width: 300px;
   }
 
   .suggestions button {
     width: 100%;
   }
+
+  /* Input area */
+  .input-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 12px 10px;
+  }
 }
+
