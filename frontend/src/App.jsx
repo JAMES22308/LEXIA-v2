@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
 import Auth from "./components/auth/Auth";
@@ -17,6 +18,7 @@ function App() {
 
   // UI only
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const warmUpBackend = async () => {
     try {
@@ -38,7 +40,7 @@ function App() {
     });
 
     const {
-      data: { subscription }
+      data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
@@ -65,8 +67,8 @@ function App() {
       ...previous,
       {
         role: "user",
-        content: userMessage
-      }
+        content: userMessage,
+      },
     ]);
 
     setQuestion("");
@@ -78,11 +80,11 @@ function App() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            userQuestion: userMessage
-          })
+            userQuestion: userMessage,
+          }),
         }
       );
 
@@ -95,8 +97,8 @@ function App() {
         {
           role: "assistant",
           content: data.answer,
-          provider: data.provider
-        }
+          provider: data.provider,
+        },
       ]);
     } finally {
       setLoading(false);
@@ -106,26 +108,31 @@ function App() {
   const startNewChat = () => {
     setMessages([]);
     setQuestion("");
+    setMobileMenuOpen(false);
   };
 
   return (
-    <div className={`app ${sidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
-
-      {/* =========================
-          Sidebar
-      ========================= */}
+    <div
+      className={`app ${
+        sidebarOpen ? "sidebar-open" : "sidebar-closed"
+      } ${mobileMenuOpen ? "mobile-menu-open" : ""}`}
+    >
+      {/* Mobile backdrop: outside the sidebar */}
+      {mobileMenuOpen && (
+        <button
+          className="mobile-backdrop"
+          aria-label="Close navigation menu"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
 
       <aside className="sidebar">
-
         <div className="sidebar-top">
-
           <div className="sidebar-logo">
             <div className="logo-icon">L</div>
 
             {sidebarOpen && (
-              <span className="logo-text">
-                LEXIA
-              </span>
+              <span className="logo-text">LEXIA</span>
             )}
           </div>
 
@@ -136,25 +143,20 @@ function App() {
           >
             {sidebarOpen ? "‹" : "›"}
           </button>
-
         </div>
 
         <div className="sidebar-content">
-
           <button
             className="new-chat-button"
             onClick={startNewChat}
           >
             <span className="new-chat-icon">+</span>
 
-            {sidebarOpen && (
-              <span>New chat</span>
-            )}
+            {sidebarOpen && <span>New chat</span>}
           </button>
 
           {sidebarOpen && (
             <div className="sidebar-section">
-
               <div className="sidebar-section-title">
                 Recent
               </div>
@@ -171,16 +173,12 @@ function App() {
                   No recent chats
                 </div>
               )}
-
             </div>
           )}
-
         </div>
 
         <div className="sidebar-bottom">
-
           <div className="sidebar-user">
-
             <div className="user-avatar">
               {session?.user?.email?.charAt(0).toUpperCase() || "U"}
             </div>
@@ -191,12 +189,11 @@ function App() {
                   {session?.user?.email || "User"}
                 </span>
 
-                <span className="user-status">
+                {/* <span className="user-status">
                   Free account
-                </span>
+                </span> */}
               </div>
             )}
-
           </div>
 
           {sidebarOpen && (
@@ -209,74 +206,53 @@ function App() {
               Sign out
             </button>
           )}
-
         </div>
-
       </aside>
 
-
-      {/* =========================
-          Main Application
-      ========================= */}
-
+      {/* Main Application */}
       <div className="main-area">
-
         {/* Header */}
-
         <header className="top-bar">
-
-          <div className="mobile-logo">
-
-            <div className="logo-icon">
+          <div
+            className="mobile-logo"
+            role="button"
+            tabIndex={0}
+            aria-label="Open LEXIA sidebar"
+            onClick={() => setMobileMenuOpen(true)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setMobileMenuOpen(true);
+              }
+            }}
+          >
+            <div className="logo-icon mobile-header-logo-icon">
               L
             </div>
 
-            <span>
-              LEXIA
-            </span>
-
+            <span>LEXIA</span>
           </div>
 
           <div className="top-status">
-
             <span className="status-dot"></span>
-
-            <span>
-              AI Assistant
-            </span>
-
+            <span>AI Assistant</span>
           </div>
-
         </header>
 
-
         {/* Chat */}
-
         <main className="chat-container">
-
           {messages.length === 0 && (
-
             <div className="welcome">
+              <div className="welcome-icon">✦</div>
 
-              <div className="welcome-icon">
-                ✦
-              </div>
+              <h1>How can I help you?</h1>
 
-              <h1>
-                How can I help you?
-              </h1>
-
-              <p>
-                Ask LEXIA anything.
-              </p>
+              <p>Ask LEXIA anything.</p>
 
               <div className="suggestions">
-
                 <button
                   onClick={() =>
-                    setQuestion(
-                      "Explain how FastAPI works"
-                    )
+                    setQuestion("Explain how FastAPI works")
                   }
                 >
                   Explain FastAPI
@@ -284,9 +260,7 @@ function App() {
 
                 <button
                   onClick={() =>
-                    setQuestion(
-                      "Help me write a Python function"
-                    )
+                    setQuestion("Help me write a Python function")
                   }
                 >
                   Write Python code
@@ -294,54 +268,35 @@ function App() {
 
                 <button
                   onClick={() =>
-                    setQuestion(
-                      "What is MVC architecture?"
-                    )
+                    setQuestion("What is MVC architecture?")
                   }
                 >
                   Explain MVC
                 </button>
-
               </div>
-
             </div>
-
           )}
 
-
           {/* Messages */}
-
           {messages.map((message, index) => (
-
             <div
               key={index}
               className={`message ${message.role}`}
             >
-
               {message.role === "assistant" && (
-                <div className="avatar">
-                  L
-                </div>
+                <div className="avatar">L</div>
               )}
 
               <div className="message-content">
-
                 {message.role === "assistant" ? (
-
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
-
                       pre({ children }) {
                         return <>{children}</>;
                       },
 
-                      code({
-                        className,
-                        children,
-                        ...props
-                      }) {
-
+                      code({ className, children, ...props }) {
                         const match =
                           /language-([\w+-]+)/.exec(
                             className || ""
@@ -358,33 +313,24 @@ function App() {
                           );
                         }
 
-                        const code =
-                          String(children).replace(
-                            /\n$/,
-                            ""
-                          );
+                        const code = String(children).replace(
+                          /\n$/,
+                          ""
+                        );
 
                         return (
-
                           <div className="code-block">
-
                             <div className="code-header">
-
-                              <span>
-                                {match[1]}
-                              </span>
+                              <span>{match[1]}</span>
 
                               <button
                                 type="button"
                                 onClick={() =>
-                                  navigator.clipboard.writeText(
-                                    code
-                                  )
+                                  navigator.clipboard.writeText(code)
                                 }
                               >
                                 Copy
                               </button>
-
                             </div>
 
                             <SyntaxHighlighter
@@ -396,105 +342,64 @@ function App() {
                                 padding: "16px",
                                 background: "#282c34",
                                 whiteSpace: "pre",
-                                overflowX: "auto"
+                                overflowX: "auto",
                               }}
                               codeTagProps={{
                                 style: {
-                                  whiteSpace: "pre"
-                                }
+                                  whiteSpace: "pre",
+                                },
                               }}
                             >
                               {code}
                             </SyntaxHighlighter>
-
                           </div>
-
                         );
-                      }
+                      },
                     }}
                   >
                     {message.content}
                   </ReactMarkdown>
-
                 ) : (
-
-                  <p>
-                    {message.content}
-                  </p>
-
+                  <p>{message.content}</p>
                 )}
 
                 {message.provider && (
-
                   <div className="provider">
-
                     <span className="provider-dot"></span>
-
                     {message.provider}
-
                   </div>
-
                 )}
-
               </div>
-
             </div>
-
           ))}
 
-
           {/* Loading */}
-
           {loading && (
-
             <div className="message assistant">
-
-              <div className="avatar">
-                L
-              </div>
+              <div className="avatar">L</div>
 
               <div className="message-content">
-
                 <div className="typing">
-
                   <span></span>
                   <span></span>
                   <span></span>
-
                 </div>
-
               </div>
-
             </div>
-
           )}
-
         </main>
 
-
-        {/* =========================
-            Input
-        ========================= */}
-
+        {/* Input */}
         <div className="input-wrapper">
-
           <div className="input-box">
-
             <textarea
               value={question}
-              onChange={(e) =>
-                setQuestion(e.target.value)
-              }
+              onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={(e) => {
-
-                if (
-                  e.key === "Enter" &&
-                  !e.shiftKey
-                ) {
+                if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
                   askAI();
                 }
-
               }}
               placeholder="Message LEXIA..."
               rows="1"
@@ -503,24 +408,17 @@ function App() {
             <button
               className="send-button"
               onClick={askAI}
-              disabled={
-                !question.trim() ||
-                loading
-              }
+              disabled={!question.trim() || loading}
             >
               ↑
             </button>
-
           </div>
 
           <p className="disclaimer">
             LEXIA can make mistakes. Check important information.
           </p>
-
         </div>
-
       </div>
-
     </div>
   );
 }
