@@ -1,0 +1,430 @@
+:root {
+    --lexia-accent: #8b83ff;
+    --lexia-accent-soft: rgba(139, 131, 255, 0.12);
+    --lexia-border: var(--vscode-panel-border, var(--vscode-widget-border));
+    --lexia-muted: var(--vscode-descriptionForeground);
+    --lexia-surface: var(--vscode-editorWidget-background);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0 12px 12px;
+    color: var(--vscode-foreground);
+    background: var(--vscode-sideBar-background);
+    font-family: var(--vscode-font-family);
+    font-size: var(--vscode-font-size);
+}
+
+button,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 2px 13px;
+    background: var(--vscode-sideBar-background);
+    border-bottom: 1px solid var(--lexia-border);
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-name {
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: 1.5px;
+}
+
+.brand-accent {
+    color: var(--lexia-accent);
+}
+
+.brand-subtitle {
+    color: var(--lexia-muted);
+    font-size: 9px;
+    letter-spacing: 1.4px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #65c99a;
+    box-shadow: 0 0 8px rgba(101, 201, 154, 0.3);
+}
+
+main {
+    padding-bottom: 10px;
+}
+
+.welcome {
+    padding: 36px 2px 24px;
+    text-align: center;
+}
+
+.welcome-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 15px;
+    border: 1px solid rgba(139, 131, 255, 0.35);
+    border-radius: 15px;
+    color: var(--lexia-accent);
+    background: var(--lexia-accent-soft);
+    font-size: 23px;
+    font-weight: 750;
+}
+
+.welcome h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 650;
+}
+
+.welcome p {
+    margin: 0 auto 22px;
+    max-width: 270px;
+    color: var(--lexia-muted);
+    line-height: 1.55;
+}
+
+.suggestions {
+    display: grid;
+    gap: 8px;
+    text-align: left;
+}
+
+.suggestion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px;
+    color: var(--vscode-foreground);
+    text-align: left;
+    background: var(--lexia-surface);
+    border: 1px solid var(--lexia-border);
+    border-radius: 9px;
+}
+
+.suggestion span {
+    color: var(--lexia-accent);
+    font-size: 17px;
+}
+
+.suggestion:hover {
+    border-color: var(--lexia-accent);
+    background: var(--lexia-accent-soft);
+}
+
+.message {
+    margin: 18px 0;
+}
+
+.user-message {
+    padding: 10px 12px;
+    border: 1px solid var(--lexia-border);
+    border-radius: 12px;
+    background: var(--lexia-surface);
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.assistant-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-weight: 650;
+}
+
+.assistant-mark {
+    display: grid;
+    place-items: center;
+    width: 23px;
+    height: 23px;
+    border-radius: 7px;
+    color: var(--lexia-accent);
+    background: var(--lexia-accent-soft);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.assistant-content {
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+.assistant-content h1,
+.assistant-content h2,
+.assistant-content h3 {
+    margin: 20px 0 8px;
+    font-size: 1.05em;
+    line-height: 1.4;
+}
+
+.assistant-content p {
+    margin: 10px 0;
+}
+
+.assistant-content ul,
+.assistant-content ol {
+    padding-left: 22px;
+}
+
+.assistant-content li {
+    margin: 5px 0;
+}
+
+.assistant-content code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: var(--lexia-surface);
+    font-family: var(--vscode-editor-font-family);
+    font-size: 0.92em;
+}
+
+.code-card {
+    margin: 14px 0;
+    overflow: hidden;
+    border: 1px solid var(--lexia-border);
+    border-radius: 9px;
+    background: var(--vscode-textCodeBlock-background);
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--lexia-border);
+    color: var(--lexia-muted);
+    font-size: 11px;
+}
+
+.copy-button {
+    padding: 4px 8px;
+    border: 1px solid var(--lexia-border);
+    border-radius: 5px;
+    color: var(--vscode-foreground);
+    background: transparent;
+    font-size: 11px;
+}
+
+.copy-button:hover {
+    background: var(--lexia-accent-soft);
+    border-color: var(--lexia-accent);
+}
+
+.code-card pre {
+    margin: 0;
+    padding: 12px;
+    overflow-x: auto;
+    line-height: 1.55;
+    tab-size: 4;
+}
+
+.code-card pre code {
+    padding: 0;
+    background: transparent;
+    white-space: pre;
+}
+
+.message-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.action-button {
+    padding: 5px 8px;
+    color: var(--lexia-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 11px;
+}
+
+.action-button:hover {
+    color: var(--vscode-foreground);
+    border-color: var(--lexia-border);
+}
+
+.loading {
+    color: var(--lexia-muted);
+    padding: 14px 0;
+}
+
+.error-message {
+    margin: 8px 0;
+    padding: 9px;
+    color: var(--vscode-errorForeground);
+    border: 1px solid var(--lexia-border);
+    border-radius: 7px;
+}
+
+.composer {
+    position: sticky;
+    bottom: 0;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--lexia-border);
+    background: var(--vscode-sideBar-background);
+}
+
+.composer textarea {
+    display: block;
+    width: 100%;
+    min-height: 68px;
+    max-height: 180px;
+    resize: vertical;
+    padding: 11px;
+    color: var(--vscode-input-foreground);
+    background: var(--vscode-input-background);
+    border: 1px solid var(--vscode-input-border, var(--lexia-border));
+    border-radius: 10px;
+    outline: none;
+    line-height: 1.5;
+}
+
+.composer textarea:focus {
+    border-color: var(--lexia-accent);
+}
+
+.composer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 1px 0;
+}
+
+.composer-hint {
+    color: var(--lexia-muted);
+    font-size: 10px;
+}
+
+.send-button {
+    display: grid;
+    place-items: center;
+    width: 31px;
+    height: 31px;
+    border: 0;
+    border-radius: 9px;
+    color: var(--vscode-button-foreground);
+    background: var(--vscode-button-background);
+    font-size: 20px;
+}
+
+.send-button:hover {
+    background: var(--vscode-button-hoverBackground);
+}
+
+.send-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--lexia-border);
+}
+
+blockquote {
+    margin-left: 0;
+    padding-left: 12px;
+    border-left: 3px solid var(--lexia-accent);
+    color: var(--lexia-muted);
+}
+
+
+/* LEXIA code syntax highlighting */
+.code-card pre {
+    background: var(--vscode-textCodeBlock-background, #161821);
+    color: #d4d4d4;
+}
+
+.code-card pre code {
+    color: #d4d4d4;
+    font-family: var(--vscode-editor-font-family, monospace);
+}
+
+/* Keywords */
+.code-card .token.keyword {
+    color: #c586c0;
+}
+
+/* Strings */
+.code-card .token.string {
+    color: #ce9178;
+}
+
+/* Comments */
+.code-card .token.comment {
+    color: #6a9955;
+    font-style: italic;
+}
+
+/* Numbers */
+.code-card .token.number {
+    color: #b5cea8;
+}
+
+/* Functions */
+.code-card .token.function {
+    color: #dcdcaa;
+}
+
+/* Variables and properties */
+.code-card .token.variable,
+.code-card .token.property {
+    color: #9cdcfe;
+}
+
+/* Operators */
+.code-card .token.operator {
+    color: #d4d4d4;
+}
+
+/* HTML tags */
+.code-card .token.tag {
+    color: #569cd6;
+}
+
+/* Punctuation */
+.code-card .token.punctuation {
+    color: #d4d4d4;
+}
+.code-card pre {
+    overflow-x: auto;
+    background: #1e1e1e;
+    border-radius: 0 0 8px 8px;
+    padding: 12px;
+}
+
+.code-card pre code.hljs {
+    background: transparent;
+    padding: 0;
+    font-family: var(--vscode-editor-font-family, monospace);
+    font-size: 12px;
+    line-height: 1.6;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src {{CSP}} https://cdnjs.cloudflare.com; script-src 'nonce-{{NONCE}}' https://cdnjs.cloudflare.com;"
+    >
+
+    <link rel="stylesheet" href="{{CSS_URI}}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/vs2015.min.css"
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-name">L<span class="brand-accent">EX</span>IA</span>
+            <span class="brand-subtitle">AI CODING ASSISTANT</span>
+        </div>
+        <span class="status-dot" title="Ready"></span>
+    </header>
+
+    <main>
+        <section id="welcome" class="welcome">
+            <div class="welcome-icon">L</div>
+            <h2>How can I help?</h2>
+            <p>Ask about your code, find bugs, or explore improvements.</p>
+
+            <div class="suggestions">
+                <button class="suggestion" data-question="What's wrong with this code?">
+                    <span>⌕</span>
+                    Find bugs
+                </button>
+                <button class="suggestion" data-question="How can I improve this code?">
+                    <span>✧</span>
+                    Suggest improvements
+                </button>
+                <button class="suggestion" data-question="Explain how this code works.">
+                    <span>≡</span>
+                    Explain this file
+                </button>
+            </div>
+        </section>
+
+        <section id="conversation" aria-live="polite"></section>
+    </main>
+
+    <div id="error" class="error-message" hidden></div>
+
+    <footer class="composer">
+        <textarea
+            id="question"
+            rows="2"
+            placeholder="Ask about your code..."
+            aria-label="Ask LEXIA a question"
+        ></textarea>
+
+        <div class="composer-bottom">
+            <span class="composer-hint">Uses your active file</span>
+            <button id="send" class="send-button" title="Send message" aria-label="Send message">
+                ↑
+            </button>
+        </div>
+    </footer>
+
+    <script nonce="{{NONCE}}" src="{{JS_URI}}"></script>
+</body>
+</html>
