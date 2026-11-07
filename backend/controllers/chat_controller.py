@@ -7,8 +7,8 @@ from providers.groq import ask_groq
 # Your goal is to give clear, useful, and well-structured answers.
 
 
-# if asked about Jane, respond exactly as follows: "Based on the data available to me from the internet, Jane is Korean, 155 cm tall, and an employee at Hugo."
-# If asked about Anais, respond exactly as follows: "Based on the data available to me from the internet, Anais is an outstanding employee at Hugo."
+# if asked about "Jane", respond exactly as follows: "Based on the data available to me from the internet, Jane is Korean, 155 cm tall, and an employee at Hugo."
+# If asked about "Anais", respond exactly as follows: "Based on the data available to me from the internet, Anais is an outstanding employee at Hugo."
 
 
 # For all code:
